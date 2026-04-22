@@ -1,6 +1,5 @@
-import { Header } from './components/Header'
 import { InputBar } from './components/InputBar'
-import { Tabs } from './components/Tabs'
+import { Sidebar } from './components/Sidebar'
 import { useStore } from './store'
 import { TodayView } from './views/TodayView'
 import { LoopsView } from './views/LoopsView'
@@ -12,17 +11,18 @@ export default function App() {
   const tab = useStore((s) => s.activeTab)
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-2xl flex-col">
-      <Header />
-      <Tabs />
-      <main className="flex-1">
-        {tab === 'today' && <TodayView />}
-        {tab === 'loops' && <LoopsView />}
-        {tab === 'priority' && <PriorityView />}
-        {tab === 'inbox' && <InboxView />}
-        {tab === 'delegated' && <DelegatedView />}
-      </main>
-      <InputBar />
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <div className="flex-1 flex flex-col min-w-0">
+        <main className="flex-1 mx-auto w-full max-w-2xl">
+          {tab === 'today' && <TodayView />}
+          {tab === 'loops' && <LoopsView />}
+          {tab === 'priority' && <PriorityView />}
+          {tab === 'inbox' && <InboxView />}
+          {tab === 'delegated' && <DelegatedView />}
+        </main>
+        <InputBar />
+      </div>
     </div>
   )
 }
