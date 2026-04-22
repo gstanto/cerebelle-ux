@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #05060B;
+  color: #E7E9F0;
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+}
+
+/* Subtle grain + vignette to make the dark feel alive */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, rgba(255, 45, 111, 0.10), transparent 60%),
+    radial-gradient(900px 500px at 100% 110%, rgba(45, 77, 255, 0.06), transparent 60%);
+  z-index: 0;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #222636; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #2D3145; }
+
+/* Selection */
+::selection {
+  background: rgba(255, 45, 111, 0.45);
+  color: #fff;
+}
+
+/* Remove tap highlight on tablet */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Input caret pink */
+textarea, input {
+  caret-color: #FF2D6F;
+}
